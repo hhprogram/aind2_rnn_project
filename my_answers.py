@@ -48,6 +48,15 @@ def build_part1_RNN(window_size):
 ### TODO: return the text input with only ascii lowercase and the punctuation given below included.
 def cleaned_text(text):
     punctuation = ['!', ',', '.', ':', ';', '?']
+    # import the string module here so I can easily refer to the ascii lowercase letter
+    import string
+    # this creates a set of the characters found in text
+    unique_chars = set(text)
+    # loop through the unique characters found in text and if not found in punctuation nor 
+    # ascii_lowercase then replace with a space
+    for char in unique_chars:
+        if char not in string.ascii_lowercase and char not in punctuation:
+            text = text.replace(char, " ")
 
     return text
 
