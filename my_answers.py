@@ -33,7 +33,16 @@ def window_transform_series(series, window_size):
 
 # TODO: build an RNN to perform regression on our time series input/output data
 def build_part1_RNN(window_size):
-    pass
+    # build a multi-layered LSTM similar to building a normal neural network and/or CNN
+    # since first layer has 5 units (or size of 5) put 5. And then the input_shape for 
+    # each LSTM cell is just (window_size,1) because each cell will be reading an input
+    # vector of that length as the window_size determines how many previous days' worth
+    # of pricing data we use as our input for our prediction
+    model = Sequential()
+    model.add(LSTM(5, input_shape=(window_size,1)))
+    model.add(Dense(1))
+    return model
+
 
 
 ### TODO: return the text input with only ascii lowercase and the punctuation given below included.
